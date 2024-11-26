@@ -1,6 +1,5 @@
 # PiTunes<br />
-With the use of a Python script, this Raspberry Pi makes API calls to Spotify which are controlled with RFIDs<br />
-
+PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled through RFID tags. Using a Python script with Spotipy API calls, PiTunes lets you pause, skip, or play specific songs and albums with just a tap. Enjoy a personalized music experience where each tag brings up something new.
 ## Setup<br />
 - A Raspberry Pi 3+
 ### Make sure Pi is updated:
