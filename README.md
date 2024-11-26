@@ -55,3 +55,4 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 ### Notes:
 - Since the program runs on an infinite loop, it can be killed using: `Ctrl + C`
 - If there is a device not found error, re-connect to Raspotify using another device ex. Phone
+- To add songs or albums, you must get the link Spotify provides when you click share. This link will look similar to this: `https://open.spotify.com/track/7KA4W4McWYRpgf0fWsJZWB?si=7b7946d4a5394cd0` We want the part that is between the forward slash `/` and `?`, so for the given example it would be `7KA4W4McWYRpgf0fWsJZWB`.
