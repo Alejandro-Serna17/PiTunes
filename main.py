@@ -21,7 +21,7 @@ while True:
             print("Card Value is:",id)
             sp.transfer_playback(device_id=deviceId, force_play=False)
 
-            if (id==841043396814) # Play a song
+            if (id==841043396814): # Play a song
                 sp.start_playback(device_id=deviceId, uris=['spotify:track:7KA4W4McWYRpgf0fWsJZWB'])
                 sleep(2)
             elif (id==117456696): # Play an album
