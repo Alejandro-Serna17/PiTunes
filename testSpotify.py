@@ -2,6 +2,7 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
+# Replace with your own
 deviceId=""
 clientId=""
 clientSecret=""
