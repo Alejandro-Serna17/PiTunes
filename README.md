@@ -50,13 +50,13 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 
 ### Open testSpotify.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
-- save and run the script:  `python3 testSpotify.py `
+- save and run the script:  `python3 testSpotify.py`
 - Authenticate on the Spotify window
 - Close the window
 
 ### Open main.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
-- save and run the script:  `python3 main.py `
+- save and run the script:  `python3 main.py`
 - And that's it!
 ### Notes:
 - Since the program runs on an infinite loop, it can be killed using: `Ctrl + C`
