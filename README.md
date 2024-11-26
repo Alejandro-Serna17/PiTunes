@@ -23,7 +23,7 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 `sudo pip3 install mfrc522`
 ### Test current setup:
 - RFID Scanner will be able to pick up scans now.
-- Run tagReader.py `python3 tagReader.py`
+- Run tagReader.py `python3 tagReader.py` to make sure it is working correctly.
 ### Make the Raspberry Pi a connect device:
 - Download the library Raspotify<br/>
 
