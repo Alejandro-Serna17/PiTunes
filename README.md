@@ -12,13 +12,19 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 - Reboot the Pi<br/>
 
 `sudo reboot`
+### Install hardware:
+- Connect the RFID reader to the Raspberry Pi's GPIO ports using this diagram:
+
+`https://alejandrocodes.dev/guides/mfrc522ToGPIO.webp`
+
 ### Install Python & Libraries:
 `sudo apt-get install python3-dev python3-pip`<br/>
 `sudo pip3 install spidev`<br/>
 `sudo pip3 install mfrc522`
-### Test current setup with reader.py:
+### Test current setup:
 - RFID Scanner will be able to pick up scans now.
-### Make the Raspberry Pi a connect device
+- Run tagReader.py `python3 tagReader.py`
+### Make the Raspberry Pi a connect device:
 - Download the library Raspotify<br/>
 
 `sudo apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh`
@@ -50,7 +56,7 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 
 ### Open UPDATE.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
-- save and run the script:  `python3 UPDATEEEEE.py `
+- save and run the script:  `python3 main.py `
 - And that's it!
 ### Notes:
 - Since the program runs on an infinite loop, it can be killed using: `Ctrl + C`
