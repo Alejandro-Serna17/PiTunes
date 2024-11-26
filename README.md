@@ -1,4 +1,4 @@
-# Raspberry Pi Player<br />
+# PiTunes<br />
 With the use of a Python script, this Raspberry Pi makes API calls to Spotify which are controlled with RFIDs<br />
 
 ## Setup<br />
