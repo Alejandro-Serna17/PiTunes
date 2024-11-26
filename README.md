@@ -54,7 +54,7 @@ With the use of a Python script, this Raspberry Pi makes API calls to Spotify wh
 - Authenticate on the Spotify window
 - Close the window
 
-### Open UPDATE.py:
+### Open main.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
 - save and run the script:  `python3 main.py `
 - And that's it!
