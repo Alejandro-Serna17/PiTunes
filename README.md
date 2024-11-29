@@ -68,6 +68,6 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 - And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
 
 ## Notes:
-- Since the program runs on an infinite loop, it can be killed using: `Ctrl + C`
+- Since the programs run on an infinite loops, they can be killed using: `Ctrl + C`
 - If there is a device not found error, re-connect to Raspotify using another device ex. Phone
 - If using a Raspberry Pi 5, the RPi.GPIO library won't be compatible. Use gpiozero instead: `pip install gpiozero`
