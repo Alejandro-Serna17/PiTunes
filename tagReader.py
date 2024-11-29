@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
+from time import sleep
 
-reader = SimpleMFRC522()
-
-try:
-        print("Awaiting scan...")
-        id = reader.read()[0]
-        print("Tag Number:", id)
-finally:
-        print("Cleaning...")
-        GPIO.cleanup()
+while True:
+    reader = SimpleMFRC522()
+    try:
+            print("\nAwaiting for scan...")
+            tagId = reader.read()[0] # Tag Id
+            tagValue = reader.read()[1] # Tag Value
+            print("RFID tag id:", tagId)
+            print("RFID tag value:", tagValue)
+    finally:
+            print("Cleaning...")
+            GPIO.cleanup()
+            sleep(2)
