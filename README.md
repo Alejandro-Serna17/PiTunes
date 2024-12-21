@@ -1,4 +1,4 @@
-# PiTunes<br />
+# PiTunes<br /> <img src="PiTunes.webp" alt="PiTunes Logo" style="width:128px; height:auto;"/>
 PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled through RFID tags. Using a Python script with Spotipy API calls, PiTunes lets you pause, skip, or play specific songs and albums with just a tap. Enjoy a personalized music experience where each tag brings up something new.
 ## Setup<br />
 - A Raspberry Pi 3 or newer.
