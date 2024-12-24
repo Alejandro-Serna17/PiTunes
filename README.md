@@ -7,8 +7,9 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 `sudo apt-get upgrade`
 ### Enable SPI and I2C on the Pi:
 `sudo raspi-config`
+- Select Interface Options:
 - Select SPI and click 'Yes'
-- Select Interfacing Options > I2c and click 'Enable' (optional)
+- Select I2c and click 'Yes' (optional)
 - Reboot the Pi<br/>
 `sudo reboot`
 ### Install hardware:
