@@ -4,9 +4,9 @@ from spotipy.oauth2 import SpotifyOAuth
 from time import sleep
 from RPLCD.i2c import CharLCD
 
-deviceId = "98bb0735e28656bac098d927d410c3138a4b5bca"
-clientId = "461faaead1ac4dd79c15e71b136c3cb9"
-clientSecret = "5556e041f54544d9a35934a5c2a3a440"
+deviceId=""
+clientId=""
+clientSecret=""
 lcd = CharLCD('PCF8574', 0x27)
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=clientId, client_secret=clientSecret, redirect_uri="http://localhost:8080", scope="user-read-playback-state,user-modify-playback-state"))
 
