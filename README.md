@@ -5,25 +5,30 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 ### Make sure Pi is updated:
 `sudo apt-get update`<br/>
 `sudo apt-get upgrade`
-### Enable SPI on the Pi:
+### Enable SPI and I2C on the Pi:
 `sudo raspi-config`
 - Select SPI and click 'Yes'
+- Select Interfacing Options > I2c and click 'Enable' (optional)
 - Reboot the Pi<br/>
-
 `sudo reboot`
 ### Install hardware:
 - Connect the RFID reader to the Raspberry Pi's GPIO ports using this diagram:
 
-`https://alejandrocodes.dev/guides/mfrc522ToGPIO.webp`
+  `https://alejandrocodes.dev/guides/mfrc522ToGPIO.webp`
+- Connect the lcd display to the Raspberry Pi's GPIO ports using this diagram: (optional)
+
+  `https://alejandrocodes.dev/guides/i2c2400ToGPIO.webp`
 
 ### Install Python & Libraries:
 `sudo apt-get install python3-dev python3-pip`<br/>
 `sudo pip3 install spidev`<br/>
-`sudo pip3 install mfrc522`
+`sudo pip3 install mfrc522`<br/>
+`sudo pip install RPLCD` (optional)
 ### Test current setup:
 - RFID Scanner will be able to pick up scans now.
 - Run tagReader.py `python3 tagReader.py` to make sure it is working correctly.
 - Note that a new tag doesn't usually have a value, just an ID so the Value will be blank at first.
+- Run testDisplay.py `python3 testDisplay.py` to make sure the display works correctly. (optional)
 ### Make the Raspberry Pi a connect device:
 - Download the library Raspotify<br/>
 
@@ -64,10 +69,20 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 ### Open main.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
 - Update the id's for the basic Spotify controls using your own tags. You may use `tagReader.py` once again to check the tag id's.
-- save and run the script:  `python3 main.py`
+- Save the script.
+
+### If not using LCD display:
+- Run main.py `python3 main.py`
+- And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
+
+### If using LCD display:
+- Open display.py
+- Update the device ID, client ID, and client Secret with the data we got before and save.
+- Run the script `./run.sh` this will execute both  `main.py` and `display.py` in the background
 - And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
 
 ## Notes:
+- Every instruction that has '(optional)' means it is meant if you'd like to use the LCD display. PiTunes will work perfectly fine without it, its an optional additional feature.
 - Since the programs run on an infinite loops, they can be killed using: `Ctrl + C`
 - If there is a device not found error, re-connect to Raspotify using another device ex. Phone
 - If using a Raspberry Pi 5, the RPi.GPIO library won't be compatible. Use gpiozero instead: `pip install gpiozero`
