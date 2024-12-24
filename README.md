@@ -28,18 +28,25 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 - RFID Scanner will be able to pick up scans now.
 - Run tagReader.py `python3 tagReader.py` to make sure it is working correctly.
 - Note that a new tag doesn't usually have a value, just an ID so the Value will be blank at first.
-- Run testDisplay.py `python3 testDisplay.py` to make sure the display works correctly. (optional)
+- Optional:
+- Open testDisplay.py and update the I2C address to the correct one on your Raspberry Pi.
+- Find your I2C address:
+- Install i2c-tools: `sudo apt-get install -y i2c-tools`
+- Scan for I2C devices: `i2cdetect -y 1`
+- The output will be a grid showing addresses (in hexadecimal) where devices are detected.
+- Update this line: `lcd=CharLCD('PCF8574', 0x27)` where the 0x27 will be replaced by 0x followed by the number obtained from this command: `i2cdetect -y 1` (e.g. 0x42 if the number was 42)
+- Save and run testDisplay.py `python3 testDisplay.py` to make sure the display works correctly.
 ### Make the Raspberry Pi a connect device:
 - Download the library Raspotify<br/>
 
-`sudo apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh`
+  `sudo apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh`
 
 ### Create an app on Spotify:
 - Visit `https://developer.spotify.com/dashboard`<br/>
 - Create an app and add these callback URIs:<br/>
 
-`http://localhost:8888/callback`<br/>
-`http://localhost:8080`
+  `http://localhost:8888/callback`<br/>
+  `http://localhost:8080`
 - Write down the Client ID and the Client Secret
 
 ### Get the device ID:
@@ -51,7 +58,7 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 ### Install spotipy:
 - The spotipy library is what will allow us to communicate with the Spotify API using Python.<br/>
 
-`sudo pip install spotipy`
+  `sudo pip install spotipy`
 
 ### Open testSpotify.py:
 - Update the device ID, client ID, and client Secret with the data we got before.<br/>
@@ -77,7 +84,9 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 
 ### If using LCD display:
 - Open display.py
-- Update the device ID, client ID, and client Secret with the data we got before and save.
+- Update the device ID, client ID, and client Secret with the data we got before.
+- Update the I2C address with the one we got before in case it was different than 0x27. Also do this step for clear.py
+- Save the files.
 - Run the script `./run.sh` this will execute both  `main.py` and `display.py` in the background
 - And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
 
