@@ -3,6 +3,8 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 from time import sleep
 
+GPIO.setwarnings(False)
+
 while True:
     reader = SimpleMFRC522()
     try:
@@ -11,7 +13,9 @@ while True:
             tagValue = reader.read()[1] # Tag Value
             print("RFID tag id:", tagId)
             print("RFID tag value:", tagValue)
+    except Exception as e:
+        print("\nError reading:", e)
     finally:
-            print("Cleaning...")
+            print("\nCleaning...")
             GPIO.cleanup()
             sleep(2)
