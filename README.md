@@ -10,6 +10,8 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
    - [Software Installation](#software-installation)
 3. [Testing Setup](#testing-setup)
 4. [Using PiTunes](#using-pitunes)
+   - [Assign Music to RFID Tags](#assign-music-to-rfid-tags)
+   - [Configure and Run PiTunes](#configure-and-run-pitunes)
 
 ---
 
