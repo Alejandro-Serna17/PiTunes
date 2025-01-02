@@ -22,9 +22,9 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 ### Setup
 #### Hardware Setup
 1. Enable SPI and I2c on the Raspberry Pi:
-  ```bash
-  sudo raspi-config
-  ```
+     ```bash
+     sudo raspi-config
+     ```
 - Select Interface Options:
 - Select SPI and click 'Yes'
 - Select I2c and click 'Yes' (if using an LCD display)
@@ -40,17 +40,17 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
     `https://alejandrocodes.dev/guides/i2c2400ToGPIO.webp`
 #### Software Installation
 1. Make sure Pi is updated:
-  ```bash
-  sudo apt-get update
-  sudo apt-get upgrade
-  ```
+     ```bash
+     sudo apt-get update
+     sudo apt-get upgrade
+     ```
 2. Install Python & Libraries:
-  ```bash
-  sudo apt-get install python3-dev python3-pip
-  sudo pip3 install spidev
-  sudo pip3 install mfrc522
-  sudo pip3 install spotipy
-  ```
+     ```bash
+     sudo apt-get install python3-dev python3-pip
+     sudo pip3 install spidev
+     sudo pip3 install mfrc522
+     sudo pip3 install spotipy
+     ```
   - (Optional) For LCD display:
     ```bash
     sudo pip install RPLCD
@@ -78,35 +78,35 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 ### Testing Setup
 #### Test RFID Reader
 1. Run the test script:
-  ```bash
-  python3 tagReader.py`
-  ```
+     ```bash
+     python3 tagReader.py`
+     ```
   >[!NOTE]
   > A new tag doesn't usually have a value, just an ID so the Value may be blank at first.
 
 #### (Optional) Test LCD Display
 1. Find your I2C address:
   - Install i2c-tools:
-  ```bash
-  sudo apt-get install -y i2c-tools
-  ```
+     ```bash
+     sudo apt-get install -y i2c-tools
+     ```
   - Scan for I2C devices:
-  ```bash
-  i2cdetect -y 1
-  ```
+     ```bash
+     i2cdetect -y 1
+     ```
   - The output will be a grid showing addresses (in hexadecimal) where devices are detected.
 2. Update the I2C address: 
   - Update this line: `lcd=CharLCD('PCF8574', 0x27)` where the 0x27 will be replaced by 0x followed by the number obtained from this command: `i2cdetect -y 1` (e.g. 0x42 if the number was 42)
 3. Save and run the display test:
-  ```bash
-  python3 testDisplay.py
-  ```
+     ```bash
+     python3 testDisplay.py
+     ```
 #### Test Spotify Integration
 1. Update `testSpotify.py` with your device ID, client ID, and client Secret with the data we got before.
 2. Save and run the script:
-  ```bash
-  python3 testSpotify.py
-  ```
+     ```bash
+     python3 testSpotify.py
+     ```
   - Authenticate on the Spotify window
   - Close the window
 
@@ -115,9 +115,9 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 1. We want to assign songs, albums, and playlists to our RFID tags, to do that we need to first find out the URI.
   - In Spotify, select a song, album, or playlist and click share to get the link. This link will look similar to this: `https://open.spotify.com/track/7KA4W4McWYRpgf0fWsJZWB?si=7b7946d4a5394cd0` We want the part that is between the forward slash `/` and the question mark `?`, so for the given example it would be `7KA4W4McWYRpgf0fWsJZWB`.
 2. Now we want to write to the tags. Run tagWriter.py
-  ```bash
-  python3 tagWriter.py
-  ```
+     ```bash
+     python3 tagWriter.py
+     ```
   - It will prompt to enter the Spotify URI. Now, this part depends on wheter you are writing this tag for a song, album, or playlist. The URI will look like this: `spotify:FIRST:SECOND` where FIRST is track, album, or playlist and SECOND will be the string we got before that was between `/` and `?`. All put together should look something like this: `spotify:track:7KA4W4McWYRpgf0fWsJZWB` or `spotify:album:7KA4W4McWYRpgf0fWsJZWB` or `spotify:playlist:7KA4W4McWYRpgf0fWsJZWB`
   - You can test that the values(URI) were written correctly by running `tagReader.py` as in the earlier step.
 
