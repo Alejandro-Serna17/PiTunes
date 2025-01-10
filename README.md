@@ -20,6 +20,7 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 - An RFID reader.
 - RFID tags/stickers to control playback.
 - (Optional) An LCD display for live data.
+- (Optional) A small monitor for live data + album artwork.
 - A Spotify Premium account.
 ### Setup
 #### Hardware Setup
@@ -36,10 +37,14 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
   ```
 2. Connect the RFID Reader:
   - Use this diagram to connect the RFID reader to the Raspberry Pi's GPIO ports:
-    `https://alejandrocodes.dev/guides/mfrc522ToGPIO.webp`
+    ```
+    https://alejandrocodes.dev/guides/mfrc522ToGPIO.webp
+    ```
 3. (Optional) Connect the LCD Display:
   - Use this diagram to connect the LCD Display to the Raspberry Pi's GPIO ports:
-    `https://alejandrocodes.dev/guides/i2c2400ToGPIO.webp`
+    ```
+    https://alejandrocodes.dev/guides/i2c2400ToGPIO.webp
+    ```
 #### Software Installation
 1. Make sure Pi is updated:
      ```bash
@@ -53,11 +58,11 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
      sudo pip3 install mfrc522
      sudo pip3 install spotipy
      ```
-  - (Optional) For LCD display:
+  - (Optional) For LCD Display:
     ```bash
     sudo pip install RPLCD
     ```
-   - (Optional) For GUI display:
+   - (Optional) For GUI Display:
      ```bash
      sudo pip install requests pillow
      ```
@@ -68,16 +73,23 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
    ```
 
 5. Create a Spotify App:
-- Visit `https://developer.spotify.com/dashboard`<br/>
+- Visit Spotify for Developers:
+  ```
+  https://developer.spotify.com/dashboard
+  ```
 - Create an app and add these callback URIs:<br/>
-
-  `http://localhost:8888/callback`<br/>
-  `http://localhost:8080`
+   ```
+  http://localhost:8888/callback
+  http://localhost:8080
+   ```
 - Write down the Client ID and the Client Secret for later use.
 
 #### Get the device ID:
 - Connect to Raspotify with any device ex. Phone<br/>
-- Visit `https://developer.spotify.com/console/get-users-available-devices/`<br/>
+- Visit this site:
+  ```
+  https://developer.spotify.com/console/get-users-available-devices/
+  ```
 - Click "Try it"
 - Take note of the Raspberry Pi's device ID for later use.
 
@@ -153,18 +165,18 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
       ```bash
       ./run_lcd.sh
       ```
-   3. Once done, use `ctrl + c` to kill both programs.
+   3. Once done, use `ctrl + C` to kill both programs.
 
 (Optional) For use with GUI Display
 1. Execute `run.sh`, this will execute both `main.py` and `display.py` in the background
    ```bash
    ./run.sh
    ```
-2. Once done, use `ctrl + c` to kill both programs.
+2. Once done, use `ctrl + C` to kill both programs.
 - And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
 
 >[!NOTE]
 > - PiTunes is fully functional on its own, but you may have noticed some instructions have "Optional". What this means is that you have the option to use: 1. An LCD display for live playback info, or 2. A GUI that displays album artwork as well as live playback info. Either one of these can be used as a simple additional feature for PiTunes!
-> - Since the programs run on an infinite loops, they can be killed using: `ctrl + C`
+> - Since most programs run on indefinately, they can always be killed using: `ctrl + C`
 > - If there is a device not found error, re-connect to Raspotify using another device ex. Phone
 > - If using a Raspberry Pi 5, the RPi.GPIO library won't be compatible. Use gpiozero instead: `pip install gpiozero`
