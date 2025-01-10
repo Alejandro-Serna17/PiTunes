@@ -57,10 +57,14 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
     ```bash
     sudo pip install RPLCD
     ```
+   - (Optional) For GUI display:
+     ```bash
+     sudo pip install requests pillow
+     ```
     
 3. Install Raspotify:
    ```bash
-   sudo apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh`
+   sudo apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
    ```
 
 5. Create a Spotify App:
@@ -81,7 +85,7 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 #### Test RFID Reader
 1. Run the test script:
      ```bash
-     python3 tagReader.py`
+     python3 tagReader.py
      ```
   >[!NOTE]
   > A new tag doesn't usually have a value, just an ID so the Value may be blank at first.
@@ -101,7 +105,7 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
   - Update this line: `lcd=CharLCD('PCF8574', 0x27)` where the 0x27 will be replaced by 0x followed by the number obtained from this command: `i2cdetect -y 1` (e.g. 0x42 if the number was 42)
 3. Save and run the display test:
      ```bash
-     python3 testDisplay.py
+     python3 testLCD.py
      ```
 #### Test Spotify Integration
 1. Update `testSpotify.py` with your device ID, client ID, and client Secret with the data we got before.
@@ -109,8 +113,18 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
      ```bash
      python3 testSpotify.py
      ```
-  - Authenticate on the Spotify window
-  - Close the window
+     - Authenticate on the Spotify window
+     - Close the window
+
+#### (Optional) Test GUI Display
+1. Update `display.py` with your device ID, client ID, and client Secret with the data we got before.
+2. Save and run the script:
+     ```bash
+     python3 display.py
+     ```
+     - On a device connected to your Spotify account, play a song.
+     - Once a song is being played, album artwork as well as playback information will be displayed.
+3. Once done, press `esc` to exit the program.
 
 ### Using PiTunes
 #### Assign Music to RFID Tags
@@ -125,23 +139,32 @@ PiTunes is a music player powered by Raspberry Pi and Raspotify, controlled thro
 
 #### Configure and Run PiTunes
 1. Update `main.py`:
-  - Update the device ID, client ID, and client Secret with the data we got before.<br/>
-  - Update the id's for the basic Spotify controls using your own tags. You may use `tagReader.py` once again to check the tag id's.
+     - Update the device ID, client ID, and client Secret with the data we got before.<br/>
+     - Update the id's for the basic Spotify controls using your own tags. You may use `tagReader.py` once again to check the tag id's.
 2. Save and Run the main script:
   `python3 main.py`
-(Optional) Use with LCD Display
-  1. Update `display.py` with:
+
+(Optional) For use with LCD Display
+  1. Update `lcd.py` with:
     - device ID, client ID, and client Secret with the data we got before.
     - I2C address with the one we got before in case it was different than 0x27.
       - Also do this step for clear.py
-  2. Execute `run.sh`, this will execute both  `main.py` and `display.py` in the background
+  2. Execute `run_lcd.sh`, this will execute both  `main.py` and `lcd.py` in the background
       ```bash
-      ./run.sh
+      ./run_lcd.sh
       ```
+   3. Once done, use `ctrl + c` to kill both programs.
+
+(Optional) For use with GUI Display
+1. Execute `run.sh`, this will execute both `main.py` and `display.py` in the background
+   ```bash
+   ./run.sh
+   ```
+2. Once done, use `ctrl + c` to kill both programs.
 - And that's it, you can now enjoy a personalized music experience where each tag brings up something new!
 
 >[!NOTE]
-> - Every instruction that has '(optional)' means it is meant if you'd like to use the LCD display. PiTunes will work perfectly fine without it, its an optional additional feature.
+> - PiTunes is fully functional on its own, but you may have noticed some instructions have "Optional". What this means is that you have the option to use: 1. An LCD display for live playback info, or 2. A GUI that displays album artwork as well as live playback info. Either one of these can be used as a simple additional feature for PiTunes!
 > - Since the programs run on an infinite loops, they can be killed using: `ctrl + C`
 > - If there is a device not found error, re-connect to Raspotify using another device ex. Phone
 > - If using a Raspberry Pi 5, the RPi.GPIO library won't be compatible. Use gpiozero instead: `pip install gpiozero`
