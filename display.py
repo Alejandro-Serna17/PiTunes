@@ -66,6 +66,7 @@ def cleanup():
 
 root = tk.Tk()
 root.attributes("-fullscreen", True)
+root.bind("<Escape>", lambda e: root.quit())
 root.bind("<Control-c>", lambda e: cleanup())
 
 tkImage = None
